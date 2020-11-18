@@ -75,21 +75,11 @@ class NewsOverviewWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Flex(
-          direction: Axis.horizontal,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Expanded(
-              flex: 0,
-              child: Text(_news.authorName),
-            ),
-            Expanded(
-              flex: 1,
-              child: Text(""),
-            ),
-            Expanded(
-              flex: 0,
-              child: Text(_news.date),
-            ),
+            Text(_news.authorName),
+            Text(_news.date),
           ],
         ),
         Flex(
