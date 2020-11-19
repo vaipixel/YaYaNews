@@ -78,8 +78,20 @@ class NewsOverviewWidget extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(_news.authorName),
-            Text(_news.date),
+            Text(
+              _news.authorName,
+              style: TextStyle(
+                color: Color.fromARGB(255, 146, 146, 146),
+                fontSize: 12
+              ),
+            ),
+            Text(
+              _news.date,
+              style: TextStyle(
+                color: Color.fromARGB(255, 146, 146, 146),
+                fontSize: 12
+              ),
+            ),
           ],
         ),
         Flex(
@@ -90,7 +102,10 @@ class NewsOverviewWidget extends StatelessWidget {
               flex: 1,
               child: Text(
                 _news.title,
-                style: TextStyle(fontSize: 22),
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
                 maxLines: 3,
               ),
             ),
@@ -98,8 +113,8 @@ class NewsOverviewWidget extends StatelessWidget {
               flex: 0,
               child: Image(
                 image: NetworkImage(_news.thumbnailPicS),
-                width: 110,
-                height: 110,
+                width: 70,
+                height: 70,
                 fit: BoxFit.cover,
               ),
             ),
