@@ -13,8 +13,9 @@ class NewsApp extends StatelessWidget {
     return MaterialApp(
       title: "News",
       theme: ThemeData(
-          primarySwatch: Colors.blue,
-          visualDensity: VisualDensity.adaptivePlatformDensity),
+        primarySwatch: Colors.blue,
+        canvasColor: Color.fromARGB(255, 245, 247, 245),
+      ),
       home: NewsHome(),
     );
   }
@@ -41,6 +42,7 @@ class _NewsHomeState extends State<NewsHome>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: NewsContainer(),
       appBar: AppBar(
         title: Text("News"),
         bottom: TabBar(
@@ -80,6 +82,7 @@ class _NewsHomeState extends State<NewsHome>
 class NewsContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    return NewsListWidget();
     return Container(
       padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
       child: NewsListWidget(),
