@@ -27,35 +27,62 @@ class NewsHome extends StatefulWidget {
   }
 }
 
-class _NewsHomeState extends State<NewsHome> {
+class _NewsHomeState extends State<NewsHome>
+    with SingleTickerProviderStateMixin {
+  TabController _tabController;
+  List<String> tabs = ["新闻", "历史", "图片"];
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: tabs.length, vsync: this);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("News"),
+        bottom: TabBar(
+          // controller: _tabController,
+          tabs: tabs
+              .map((e) => Tab(
+                    text: e,
+                  ))
+              .toList(),
+        ),
       ),
-      body: NewsContainer(),
+      body: TabBarView(
+        controller: _tabController,
+        children: tabs.map((e) {
+          return Container(
+            alignment: Alignment.center,
+            child: Text(e),
+          );
+        }).toList(),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.white,
+        shape: CircularNotchedRectangle(),
+        child: Row(
+          children: [
+            IconButton(icon: Icon(Icons.home), onPressed: null),
+            SizedBox(), //中间位置空出
+            IconButton(icon: Icon(Icons.business), onPressed: null),
+          ],
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+        ),
+      ),
     );
   }
 }
 
-class NewsContainer extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    return _NewsContainerState();
-  }
-}
-
-class _NewsContainerState extends State<NewsContainer> {
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
+class NewsContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-      return NewsListWidget();
+    return Container(
+      padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+      child: NewsListWidget(),
+    );
   }
-
 }
